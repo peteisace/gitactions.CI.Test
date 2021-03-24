@@ -1,0 +1,11 @@
+.App {
+    height: $dim-appheight;
+    width: 100%;
+    background-color: $col-bg;
+    font-family: $main;
+
+    .main {
+        margin: 0 auto;
+        width: $dim-appwidth;
+    }
+}
