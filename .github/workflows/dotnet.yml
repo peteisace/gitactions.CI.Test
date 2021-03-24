@@ -10,6 +10,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env: 
+      SITE_URL: localhost:3000
 
     steps:
     - uses: actions/checkout@v2
@@ -17,12 +19,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Choose working directory
+    - name: Restore dotnet project
       working-directory: ./gitactions.ci-test.UITesting
       run: dotnet restore
-    - name: Restore dependencies
-      run: dotnet restore
     - name: Build
+      working-directory: ./gitactions.ci-test.UITesting
       run: dotnet build --no-restore
     - name: Test
+      working-directory: ./gitactions.ci-test.UITesting
       run: dotnet test --no-build --verbosity normal
