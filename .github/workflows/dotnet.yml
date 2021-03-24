@@ -19,6 +19,7 @@ jobs:
         dotnet-version: 5.0.x
     - name: Choose working directory
       working-directory: ./gitactions.ci-test.UITesting
+      run: dotnet restore
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
