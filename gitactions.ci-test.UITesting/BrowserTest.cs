@@ -22,7 +22,7 @@ namespace gitactions.ci_test.UITesting
             using(var driver = new ChromeDriver("."))
             {
                 var options = new ChromeOptions();
-                options.AddArgument("--user-datadir=~/.config/google-chrome");
+                options.AddArgument("--user-data-dir=~/.config/google-chrome");
 
                 // go to local website
                 driver.Navigate().GoToUrl(url);
