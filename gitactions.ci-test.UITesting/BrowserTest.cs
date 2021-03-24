@@ -21,7 +21,7 @@ namespace gitactions.ci_test.UITesting
 
             var options = new ChromeOptions();
             options.AddArgument("--user-data-dir=~/.config/google-chrome");
-            options.AddArgument("--headless");
+            //options.AddArgument("--headless");
             options.AddArgument("--disable-gpu");
 
             using(var driver = new ChromeDriver(".", options))
