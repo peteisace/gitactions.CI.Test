@@ -1,0 +1,37 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env: 
+      SITE_URL: localhost:3000
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Download chromedriver
+      uses: wei/curl@master
+      with:
+        args: https://chromedriver.storage.googleapis.com/89.0.4389.23/chromedriver_linux64.zip -o ./gitactions.ci-test/UITesting/chromedriver_linux64.zip
+    - name: Unzip chromedriver
+      working-directory: ./gitactions.ci-test.UITesting
+      run: unzip chromedriver_linux64.zip && chmod 774 chromedriver
+    - name: Restore dotnet project
+      working-directory: ./gitactions.ci-test.UITesting
+      run: dotnet restore
+    - name: Build
+      working-directory: ./gitactions.ci-test.UITesting
+      run: dotnet build --no-restore
+    - name: Test
+      working-directory: ./gitactions.ci-test.UITesting
+      run: dotnet test --no-build --verbosity normal
