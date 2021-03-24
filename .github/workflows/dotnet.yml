@@ -15,6 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Build web Docker container
+      working-directory: .gitactions.ci-test.web
+      run: docker build -t testweb:latest -f ./Dockerfile .
+    - name: Run local container
+      run: docker run -it --rm -v ${PWD}:/app -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true testweb:latest &
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
