@@ -40,6 +40,9 @@ jobs:
     - name: Build
       working-directory: ./gitactions.ci-test.UITesting
       run: dotnet build --no-restore
+    - name: Move chromedriver to bin/Debug/net5.0
+      working-directory: ./gitactions.ci-test.UITesting
+      run: mv ./chromedriver ./bin/Debug/net5.0/
     - name: Test
       working-directory: ./gitactions.ci-test.UITesting
       run: dotnet test --no-build --verbosity normal
