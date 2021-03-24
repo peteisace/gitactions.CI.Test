@@ -19,6 +19,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    - name: Download chromedriver
+      working-directory: ./gitactions.ci-test.UITesting/bin/Debug/net5.0
+      run: wget https://chromedriver.storage.googleapis.com/89.0.4389.23/chromedriver_linux64.zip 
+    - name: Unzip chromedriver
+      working-directory: ./gitactions.ci-test.UITesting/bin/Debug/net5.0
+      run: unzip chromedriver_linux64.zip && chmod 774 chromedriver
     - name: Restore dotnet project
       working-directory: ./gitactions.ci-test.UITesting
       run: dotnet restore
