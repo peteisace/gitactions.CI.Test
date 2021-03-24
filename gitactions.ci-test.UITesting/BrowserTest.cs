@@ -19,11 +19,11 @@ namespace gitactions.ci_test.UITesting
             var url = string.Concat("http://", env);
             Console.WriteLine(url);
 
-            using(var driver = new ChromeDriver("."))
-            {
-                var options = new ChromeOptions();
-                options.AddArgument("--user-data-dir=~/.config/google-chrome");
+            var options = new ChromeOptions();
+            options.AddArgument("--user-data-dir=~/.config/google-chrome");
 
+            using(var driver = new ChromeDriver(".", options))
+            {
                 // go to local website
                 driver.Navigate().GoToUrl(url);
 
