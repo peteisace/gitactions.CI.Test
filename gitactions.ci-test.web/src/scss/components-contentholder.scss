@@ -34,7 +34,7 @@
         }
 
         &--col2 {
-            width: calc($dim-appwidth - 200px);
+            width: calc(#{$dim-appwidth - 200px});
         }
     }
 }
