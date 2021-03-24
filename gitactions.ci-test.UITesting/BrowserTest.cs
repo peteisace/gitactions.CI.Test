@@ -43,6 +43,8 @@ namespace gitactions.ci_test.UITesting
                     .Build();
                 
                 series.Perform();
+                var value = element.GetAttribute("value");
+                Console.WriteLine($"e.GetAttribute(value) == {value}; e.Text == {element.Text}");
                 
                 Assert.IsTrue(element.GetAttribute("value") == "Shitbag");
             }
